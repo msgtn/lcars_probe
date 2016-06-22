@@ -2,7 +2,7 @@ from screens.main import ScreenMain
 from ui.ui import UserInterface
 
 # global config
-UI_PLACEMENT_MODE = True
+UI_PLACEMENT_MODE = False
 RESOLUTION = (800, 480)
 FPS = 60
 DEV_MODE = True

@@ -118,7 +118,6 @@ def servo_pos_test(a, ang):
     
 def demo(a):
     door_bl(a, 1)
-    self.fwoosh.play()
     for i in range(60, 0, -10):
         blue_thruster(a, 1)
         time.sleep(0.1)

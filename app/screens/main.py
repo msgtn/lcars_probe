@@ -68,6 +68,7 @@ class ScreenMain(LcarsScreen):
             
     def logoutHandler(self, item, event, clock):
         self.loadScreen(self, LogoutScreen)
+        self.getNextScreen(self)
 #         self.hideAll()
         
 #         self.logout_image.visible = True

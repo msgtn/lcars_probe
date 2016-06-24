@@ -1,6 +1,9 @@
 import pygame
 from pygame.locals import *
 
+from hardwareHandler import *
+a = connect_arduino()
+
 class UserInterface:
     def __init__(self, screen, resolution=(800,480), 
                  ui_placement_mode=False, fps=60, dev_mode=False,
@@ -52,6 +55,9 @@ class UserInterface:
                 newScreen.setup(self.all_sprites)
                 self.screen = newScreen
                 break
+                
+    def arduino_send(self, c):
+        asend(a, c)
     
     def isRunning(self):
         pygame.display.get_init()

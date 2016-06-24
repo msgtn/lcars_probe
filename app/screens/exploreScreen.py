@@ -255,7 +255,7 @@ class ScreenExplore(LcarsScreen):
         
 #         self.showText(self.forward_text)
         self.forward_text.visible = True
-        self.aft_button.visible = True        
+#         self.aft_button.visible = True        
         #Put others here
         self.forward_plate.visible = True
 

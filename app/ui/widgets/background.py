@@ -28,7 +28,7 @@ class LcarsImage(LcarsWidget):
         self.handler = handler
         
         self.image = pygame.image.load(image).convert()
-        LcarsWidget.__init__(self, None, pos, None)
+        LcarsWidget.__init__(self, colours.BLACK, pos, None)
 
         #self.sound_beep1 = Sound("assets/audio/panel/206.wav")
         #self.sound_granted = Sound("assets/audio/accessing.wav")
@@ -44,5 +44,5 @@ class LcarsImage(LcarsWidget):
                 self.handler(self, event, clock)
                 handled = True
 
-        LcarsWidget.handleEvent(self,event, clock)
+        LcarsWidget.handleEvent(self, event, clock)
         return handled

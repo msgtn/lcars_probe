@@ -245,6 +245,7 @@ class ScreenExplore(LcarsScreen):
         self.hideText(self.explore_screen_text)
         self.probe_forward_image.visible = False
         self.probe_aft_image.visible = False
+        self.hideText(self.propulsion_text)
         self.forward_button.visible = False
         
         self.hideText(self.communication_text)
@@ -265,7 +266,7 @@ class ScreenExplore(LcarsScreen):
         self.probe_aft_image.visible = False
 
         self.showText(self.propulsion_text)
-        self.aft_button.visible = True
+        self.aft_button.visible = False
         
         
 

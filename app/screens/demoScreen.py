@@ -8,14 +8,14 @@ from ui.widgets.gifimage import LcarsGifImage
 from ui.widgets.lcars_widgets import LcarsText, LcarsButton, LcarsBlockHuge, LcarsBlockLarge, LcarsBlockSmall, LcarsTabBlock, LcarsElbow
 from ui.widgets.screen import LcarsScreen
 from ui.widgets.sprite import LcarsMoveToMouse
-from ui import arduino_send
+from ui import arduinosend
 import time
 
 class ScreenDemo(LcarsScreen):
     def setup(self, all_sprites):
-        arduino_send(str(180))
+        ui.arduinosend(str(180))
         time.sleep(2)
-        arduino_send(str(90))
+        ui.arduinosend(str(90))
         all_sprites.add(LcarsBackgroundImage("assets/lcars_screen_1.png"),
                         layer=0)
         

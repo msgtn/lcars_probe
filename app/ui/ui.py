@@ -56,7 +56,7 @@ class UserInterface:
                 self.screen = newScreen
                 break
                 
-    def arduino_send(self, c):
+    def arduinosend(self, c):
         asend(a, c)
     
     def isRunning(self):

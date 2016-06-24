@@ -5,7 +5,7 @@ from ui.ui import UserInterface
 UI_PLACEMENT_MODE = False
 RESOLUTION = (800, 480)
 FPS = 60
-DEV_MODE = False
+DEV_MODE = True
 
 if __name__ == "__main__":
     firstScreen = ScreenMain()

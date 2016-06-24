@@ -51,7 +51,7 @@ class ScreenMain(LcarsScreen):
                         layer=1)
         all_sprites.add(LcarsBlockHuge(colours.PEACH, (249, 16), "EXPLORE", self.exploreHandler),
                         layer=1)
-        all_sprites.add(LcarsElbow(colours.BEIGE, (400, 16), "MAIN"), self.mainHandler
+        all_sprites.add(LcarsElbow(colours.BEIGE, (400, 16), "MAIN"),
                         layer=1)
         
         # Sounds

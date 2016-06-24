@@ -53,11 +53,11 @@ class ScreenExplore(LcarsScreen):
         all_sprites.add(LcarsText(colours.RED_BROWN, (142, 140), "Select a section for more information", 1.25), layer=70)
         self.explore_screen_text = all_sprites.get_sprites_from_layer(70)
         
-        self.probe_forward_image = LcarsImage("assets/probe_front.png", (172, 533), self.forwardHandler)
+        self.probe_forward_image = LcarsImage("assets/probe_front.png", (172, 500), self.forwardHandler)
         self.probe_forward_image.visible = True
         all_sprites.add(self.probe_forward_image, layer =70)
 
-        self.probe_aft_image = LcarsImage("assets/probe_rear.png", (172, 200), self.aftHandler)
+        self.probe_aft_image = LcarsImage("assets/probe_rear.png", (172, 150), self.aftHandler)
         self.probe_aft_image.visible = True
         all_sprites.add(self.probe_aft_image, layer=70)
 

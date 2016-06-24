@@ -51,7 +51,10 @@ class ScreenMain(LcarsScreen):
         # Sounds
         self.beep_1 = Sound("assets/audio/panel/201.wav")
         self.fwoosh = Sound("assets/audio/panel/250.m4a")
-        Sound("assets/audio/panel/220.wav").play()
+        self.fwoosh.set_volume(1.0)
+        self.fwoosh.play()
+        time.sleep(6)
+#         Sound("assets/audio/panel/220.wav").play()
 
         #-----Screens-----#
 

@@ -15,6 +15,9 @@ def asend(a, c):
     if (a == None):
         return
     a.write(c)
+    
+def areset(a):
+    asend(a, 'asdfgkl;\'x')
 
 def red_thruster(a, on_off):
     if (on_off):

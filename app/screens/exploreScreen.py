@@ -49,19 +49,23 @@ class ScreenExplore(LcarsScreen):
         ######################################################################
 
         ##### Explore Screen #####
+        # Explore Screen ---------------------------------------------------------------------------------
 
         all_sprites.add(LcarsText(colours.RED_BROWN, (142, 140), "Select a section for more information", 1.25), layer=70)
         self.explore_screen_text = all_sprites.get_sprites_from_layer(70)
+        self.hideText(self.explore_screen_text)
         
         self.probe_forward_image = LcarsImage("assets/probe_front.png", (172, 500), self.forwardHandler)
-        self.probe_forward_image.visible = True
+        self.probe_forward_image.visible = False
         all_sprites.add(self.probe_forward_image, layer =70)
 
         self.probe_aft_image = LcarsImage("assets/probe_rear.png", (172, 150), self.aftHandler)
-        self.probe_aft_image.visible = True
+        self.probe_aft_image.visible = False
         all_sprites.add(self.probe_aft_image, layer=70)
 
-        ##### Forward Screen #####
+
+
+        ##### Forward Section #####
         all_sprites.add(LcarsText(colours.RED_BROWN, (142, 140), "Select a component for more information", 1.25), layer=71)
         self.forward_text = all_sprites.get_sprites_from_layer(71)
 #         self.forward_text.visible = False
@@ -69,82 +73,18 @@ class ScreenExplore(LcarsScreen):
         self.forward_plate = LcarsImage("assets/forward/front_section.png", (172, 533))
         self.forward_plate.visible = False
         all_sprites.add(self.probe_forward_image, layer =71)
-        
-        
 
+        ## Back Forward Button ##
+        self.forward_button = LcarsTabBlock(colours.RED_BROWN, (372, 650), "BACK", self.forwardHandler)
+        self.forward_button.visible = False
+        all_sprites.add(self.forward_button, layer=60)
 
+        ## Back Aft Button ##
+        self.aft_button = LcarsTabBlock(colours.RED_BROWN, (372, 650), "BACK", self.exploreHandler)
+        self.aft_button.visible = False
+        all_sprites.add(self.aft_button, layer=60)
 
-        
-        
-        #self.forward_port = LcarsTabBlock(colours.BEIGE, (224, 650), "FORWARD PORT", self.fpHandler)
-        #self.forward_port.visible = True
-        #all_sprites.add(self.forward_port, layer=4)
-
-        #self.aft_starboard = LcarsTabBlock(colours.BEIGE, (278, 650), "AFT STARBOARD", self.asHandler)
-        #self.aft_starboard.visible = True
-        #all_sprites.add(self.aft_starboard, layer=4)
-        
-        # specific buttons
-        #self.forward_starboard = LcarsTabBlock(colours.BEIGE, (170, 650), "FORWARD SECTION", self.forwardHandler)
-        #self.forward_starboard.visible = True
-        #all_sprites.add(self.forward_starboard, layer=4)
-
-        #self.aft_port = LcarsTabBlock(colours.BEIGE, (332, 650), "AFT SECTION", self.aftHandler)
-        #self.aft_port.visible = True
-        #all_sprites.add(self.aft_port, layer=4)
-
-        #######   FORWARD SECTION ######
-
-        #all_sprites.add(LcarsText(colours.RED_BROWN, (192, 140), "Select a component for more information", 1.25), layer=10)
-
-                        
-        # Make each component slowly rotate
-        #self.sensor_gadget = LcarsGifImage("assets/gadgets/lcars_anim2.gif", (235, 150), 100) 
-        #self.sensor_gadget.visible = False
-        #all_sprites.add(self.sensor_gadget, layer=2)
-
-        # Forward Section
-        #   - Open front hatches & activate red interior lighting
-        # Communications Array communicationsHandler
-        #   - Illuminate
-        # Sensors Array sensorsHandler
-        #   - Change spin speed & light up and down? sonar beep?
-        # Data Acquisition & Processing Node  computerHandler
-        #   - Illuminate (fiber optic lighting)
-        # Optical Data Storage Modules  chipsHandler
-        #   - Pulse
-        # Power System  powerHandler
-        #   - Pulse
-
-
-        ###### AFT SECTION ######
-
-        # Aft Section
-        #   - Open rear hatches
-        # Ion Thrusters  thrustersHandler
-        #   - Pulse (have 2 LED colors, Red & Blue)
-        # Ion Drive  driveHandler
-        #   - Pulse (have 2 LED colors, Red & Blue)
-        # Fuel Tanks  tanksHandler
-        #   - illumate section by section
-        # Impulse Chemical Reaction Tank  impulseHandler
-        #   - Illuminate
-
-        # Also have a way to select the background for the physical specs?
-
-        ##### Back Button #####
-        self.aft_port = LcarsTabBlock(colours.RED_BROWN, (372, 650), "BACK", self.backForwardHandler)
-        self.aft_port.visible = True
-        all_sprites.add(self.aft_port, layer=60)
-
-        ##### More Info Button #####
-        self.moreInfo = LcarsTabBlock(colours.BLUE, (318, 650), "MORE INFORMATION", self.moreSensorHandler)
-        self.moreInfo.visible = True
-        all_sprites.add(self.aft_port, layer=60)
-
-        ########## FORWARD SECTION ##########
-
-        ##### BTO ARRAY #####
+        # BTO ARRAY #
         all_sprites.add(LcarsText(colours.WHITE, (112, 140), "B.T.O. ARRAY", 1.75), layer=61)  
         all_sprites.add(LcarsText(colours.ORANGE, (162, 140), "The B.T.O. Array is the primary method of communication for the probe.", 1.25), layer=61)
         all_sprites.add(LcarsText(colours.ORANGE, (192, 140), "The array is entirely composed of the S.B.S. High-Gain Parabolic Antenna,", 1.25), layer = 61)
@@ -155,7 +95,7 @@ class ScreenExplore(LcarsScreen):
         self.communication_text = all_sprites.get_sprites_from_layer(61)
         self.hideText(self.communication_text)
 
-        ##### YOKEL SENSOR SUITE #####
+        # YOKEL SENSOR SUITE #
         all_sprites.add(LcarsText(colours.WHITE, (112, 140), "YOKEL SENSOR SUITE", 1.75), layer=62)
         all_sprites.add(LcarsText(colours.ORANGE, (162, 140), "The Yokel Sensor Suite houses the scientific payload and guidance", 1.25), layer=62)
         all_sprites.add(LcarsText(colours.ORANGE, (192, 140), "system on the probe.  The instruments contained within are:", 1.25), layer=62)
@@ -171,7 +111,7 @@ class ScreenExplore(LcarsScreen):
         self.sensor_text = all_sprites.get_sprites_from_layer(62)
         self.hideText(self.sensor_text)
 
-        ##### Probe Computers #####
+        # Probe Computers #
         all_sprites.add(LcarsText(colours.WHITE, (112, 140), "PROBE COMPUTERS", 1.75), layer=63)
         all_sprites.add(LcarsText(colours.ORANGE, (162, 140), "This probe features two onboard computers, the Guidance Computer and", 1.25), layer=63)        
         all_sprites.add(LcarsText(colours.WHITE, (162, 473), "Guidance Computer", 1.25), layer=63)
@@ -185,7 +125,7 @@ class ScreenExplore(LcarsScreen):
         self.computer_text = all_sprites.get_sprites_from_layer(63)
         self.hideText(self.computer_text)
 
-        ##### Optical Data Chips #####
+        # Optical Data Chips #
         all_sprites.add(LcarsText(colours.WHITE, (112, 140), "OPTICAL DATA CHIPS", 1.75), layer=64)
         all_sprites.add(LcarsText(colours.ORANGE, (162, 140), "This probe is equipped with 24 optical data chips for the storage of sensor", 1.25), layer=64)
         all_sprites.add(LcarsText(colours.ORANGE, (192, 140), "and control data.  Each chip, which can store up to 830 TB of data, is", 1.25), layer=64)
@@ -194,7 +134,7 @@ class ScreenExplore(LcarsScreen):
         self.chip_text = all_sprites.get_sprites_from_layer(64)
         self.hideText(self.chip_text)
 
-        ##### Lofton Microfusion Core #####
+        # Lofton Microfusion Core #
         all_sprites.add(LcarsText(colours.WHITE, (112, 140), "LOFTON MICROFUSION CORE", 1.75), layer=65)
         all_sprites.add(LcarsText(colours.ORANGE, (162, 140), "All of the required power for the probe is provided by the Lofton", 1.25), layer=65)
         all_sprites.add(LcarsText(colours.ORANGE, (192, 140), "Microfusion Core.  Encased within a shielded tungsten-titanium shell,", 1.25), layer=65)
@@ -207,7 +147,9 @@ class ScreenExplore(LcarsScreen):
         self.fusion_text = all_sprites.get_sprites_from_layer(65)
         self.hideText(self.fusion_text)
 
-        ########## AFT SECTION ##########
+        
+
+        ###### AFT SECTION ######
         all_sprites.add(LcarsText(colours.WHITE, (112, 140), "PROPULSION SYSTEM", 1.75), layer=66)
         all_sprites.add(LcarsText(colours.ORANGE, (162, 140), "After launch, the probe is driven by the Kehrer Hybrid Ion Drive, is", 1.25), layer=66)
         all_sprites.add(LcarsText(colours.ORANGE, (192, 140), "capable of both ion and chemical propulsion, and is comprised of the ", 1.25), layer=66)
@@ -220,6 +162,7 @@ class ScreenExplore(LcarsScreen):
         all_sprites.add(LcarsText(colours.ORANGE, (402, 140), "the probe a versatile mix of range and maneuverability.", 1.25), layer=66)
         self.propulsion_text = all_sprites.get_sprites_from_layer(66)
         self.hideText(self.propulsion_text)
+
                 
 
 

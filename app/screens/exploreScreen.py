@@ -198,25 +198,30 @@ class ScreenExplore(LcarsScreen):
             return False
     
     def logoutHandler(self, item, event, clock):
-        from screens.authorize import ScreenAuthorize
-        self.loadScreen(ScreenAuthorize())
+        demo()
+#         from screens.authorize import ScreenAuthorize
+#         self.loadScreen(ScreenAuthorize())
 
     def aboutHandler(self, item, event, clock):
-        from screens.aboutScreen import ScreenAbout
-        self.loadScreen(ScreenAbout())
+        demo()
+#         from screens.aboutScreen import ScreenAbout
+#         self.loadScreen(ScreenAbout())
 
     def demoHandler(self, item, event, clock):
-        from screens.demoScreen import ScreenDemo
-        self.loadScreen(ScreenDemo())
+        demo()
+#         from screens.demoScreen import ScreenDemo
+#         self.loadScreen(ScreenDemo())
 
     def exploreHandler(self, item, event, clock):
+        demo()
         # Turn off all content here
 #         self.test.visible = False
-        self.loadScreen(ScreenExplore())
+#         self.loadScreen(ScreenExplore())
 
     def mainHandler(self, item, event, clock):
-        from screens.main import ScreenMain
-        self.loadScreen(ScreenMain())
+        demo()
+#         from screens.main import ScreenMain
+#         self.loadScreen(ScreenMain())
 
     ## ****** Explore Screen Handlers ******
 

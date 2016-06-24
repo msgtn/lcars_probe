@@ -115,3 +115,27 @@ def cont(a, dir):
 def servo_pos_test(a, ang):
     a.write(str(ang))
     time.sleep(2)
+    
+def demo():
+    door_bl(a, 1)
+    self.fwoosh.play()
+    for i in range(60, 0, -10):
+        blue_thruster(a, 1)
+        time.sleep(0.1)
+        blue_thruster(a, 0)
+        time.sleep(float(i)/100)
+    red_thruster(a, 1)
+    time.sleep(1)
+    door_fl(a, 1)
+    for i in range(0, 5):
+        yellow_dome(a, 1)
+        time.sleep(0.5)
+        glass(a, 1)
+        time.sleep(0.5)
+        white_dome(a, 1)
+        cont(a, (i%2)+1)
+        time.sleep(1)
+    time.sleep(1)
+    cont(a, 0)
+    white_dome(a, 0)
+    areset(a)

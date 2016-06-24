@@ -118,9 +118,9 @@ class ScreenAbout(LcarsScreen):
 
         # Sources
         all_sprites.add(LcarsText(colours.GREY_BLUE, (192, 140), "SPECIAL THANKS TO:", 1.25), layer=8)
-        all_sprites.add(LcarsText(colours.WHITE, (212, 180), "Toby Kurien (creator of LCARS Python Graphical Interface", 1.25), layer=8)
+        all_sprites.add(LcarsText(colours.WHITE, (212, 180), "Toby Kurien (creator of LCARS Python Graphical Interface)", 1.25), layer=8)
         all_sprites.add(LcarsText(colours.WHITE, (232, 180), "NC State Mechanical Engineering Department", 1.25), layer=8)
-        all_sprites.add(LcarsText(colours.WHITE,(252, 180), "NC State Entrepreneurship Initiative Garage)", 1.25), layer=8)
+        all_sprites.add(LcarsText(colours.WHITE,(252, 180), "NC State Entrepreneurship Initiative Garage", 1.25), layer=8)
         self.sources_text = all_sprites.get_sprites_from_layer(8)
         self.hideText(self.sources_text)
         
@@ -155,20 +155,22 @@ class ScreenAbout(LcarsScreen):
             sprite.visible = True
     
     def logoutHandler(self, item, event, clock):
-        from screens.authorize import ScreenAuthorize
-        self.loadScreen(ScreenAuthorize())
+        demo()
+#         from screens.authorize import ScreenAuthorize
+#         self.loadScreen(ScreenAuthorize())
 
     def demoHandler(self, item, event, clock):
-        from screens.demoScreen import ScreenDemo
-        self.loadScreen(ScreenDemo())
+        demo()
 
     def exploreHandler(self, item, event, clock):
-        from screens.exploreScreen import ScreenExplore
-        self.loadScreen(ScreenExplore())
+        demo()
+#         from screens.exploreScreen import ScreenExplore
+#         self.loadScreen(ScreenExplore())
 
     def mainHandler(self, item, event, clock):
-        from screens.main import ScreenMain
-        self.loadScreen(ScreenMain())
+        demo()
+#         from screens.main import ScreenMain
+#         self.loadScreen(ScreenMain())
 
     ## Specific Screen Handlers
         

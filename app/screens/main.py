@@ -293,49 +293,29 @@ class ScreenMain(LcarsScreen):
     # ** Screen Handlers ** --------------------------------------------------------------------
 
     def mainHandler(self, item, event, clock):
-        self.hideAll()
-        
-        self.showText(self.main_text)
+        demo()
+#         self.hideAll()
+#         self.showText(self.main_text)
             
     def logoutHandler(self, item, event, clock):
-        from screens.authorize import ScreenAuthorize
-        self.loadScreen(ScreenAuthorize())
+        demo()
+#         from screens.authorize import ScreenAuthorize
+#         self.loadScreen(ScreenAuthorize())
 
         # PUT TURN OFF COMMAND HERE
 
     def aboutHandler(self, item, event, clock):
-        from screens.aboutScreen import ScreenAbout
-        self.loadScreen(ScreenAbout())
+        demo()
+#         from screens.aboutScreen import ScreenAbout
+#         self.loadScreen(ScreenAbout())
         
     def demoHandler(self, item, event, clock):
-        door_bl(a, 1)
-        self.fwoosh.play()
-        for i in range(60, 0, -10):
-            blue_thruster(a, 1)
-            time.sleep(0.1)
-            blue_thruster(a, 0)
-            time.sleep(float(i)/100)
-        red_thruster(a, 1)
-        time.sleep(1)
-        door_fl(a, 1)
-        for i in range(0, 5):
-            yellow_dome(a, 1)
-            time.sleep(0.5)
-            glass(a, 1)
-            time.sleep(0.5)
-            white_dome(a, 1)
-            cont(a, (i%2)+1)
-            time.sleep(1)
-        time.sleep(1)
-        cont(a, 0)
-        white_dome(a, 0)
-        areset(a)
-#         from screens.demoScreen import ScreenDemo
-#         self.loadScreen(ScreenDemo())
+        demo()
 
     def exploreHandler(self, item, event, clock):
-        from screens.exploreScreen import ScreenExplore
-        self.loadScreen(ScreenExplore())
+        demo()
+#         from screens.exploreScreen import ScreenExplore
+#         self.loadScreen(ScreenExplore())
 #         self.hideAll()
 #         
 #         self.showText(self.explore_screen_text)

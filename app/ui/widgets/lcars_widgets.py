@@ -99,7 +99,28 @@ class LcarsButton(LcarsWidget):
             
         LcarsWidget.handleEvent(self, event, clock)
         return handled
-        
+
+class LcarsImageButton(LcarsWidget):
+    def __init__(self, image, pos, handler=None):
+        self.handler = handler
+
+        self.image = pygame.image.load(image).convert()
+        LcarsWidget.__init__(self, None, pos, None)
+
+    def handleEvent(self, event, clock):
+        handled = False
+        if (event.type == MOUSEBUTTONDOWN and self.rect.collidepoint(event.pos)):
+            handled = True
+
+        if (event.type == MOUSEBUTTONUP):
+            if self.handler:
+                self.handler(self, event, clock)
+                handled = True
+
+        LcarsWidget.handleEvent(self, event, clock)
+        return handled
+            
+    
 class LcarsText(LcarsWidget):
     def __init__(self, colour, pos, message, size=1.0, background=None):
         self.colour = colour

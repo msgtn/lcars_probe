@@ -24,11 +24,13 @@ class LcarsBackgroundImage(LcarsWidget):
         pass
     
 class LcarsImage(LcarsWidget):
-    def __init__(self, image, pos, handler=None):
+    def __init__(self, im, pos, handler=None):
         self.handler = handler
-        
-        self.image = pygame.image.load(image).convert()
-        LcarsWidget.__init__(self, None, pos, None)
+        image = pygame.image.load(im).convert()
+        size = (image.get_rect().width, image.get_rect().height)
+        print size
+        self.image = image
+        LcarsWidget.__init__(self, None, pos, size)
 
         #self.sound_beep1 = Sound("assets/audio/panel/206.wav")
         #self.sound_granted = Sound("assets/audio/accessing.wav")

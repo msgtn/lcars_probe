@@ -5,7 +5,7 @@ from pygame.mixer import Sound
 from ui import colours
 from ui.widgets.background import LcarsBackgroundImage, LcarsImage
 from ui.widgets.gifimage import LcarsGifImage
-from ui.widgets.lcars_widgets import LcarsText, LcarsButton, LcarsBlockHuge, LcarsBlockLarge, LcarsBlockSmall, LcarsTabBlock, LcarsElbow
+from ui.widgets.lcars_widgets import LcarsText, LcarsButton, LcarsImageButton, LcarsBlockHuge, LcarsBlockLarge, LcarsBlockSmall, LcarsTabBlock, LcarsElbow
 from ui.widgets.screen import LcarsScreen
 from ui.widgets.sprite import LcarsMoveToMouse, LcarsWidget
 
@@ -168,11 +168,11 @@ class ScreenMain(LcarsScreen):
         self.explore_screen_text = all_sprites.get_sprites_from_layer(70)
         self.hideText(self.explore_screen_text)
         
-        self.probe_forward_image = LcarsImage("assets/forward_section.png", (172, 500), self.forwardHandler)
+        self.probe_forward_image = LcarsImageButton("assets/forward_section.png", (172, 500), self.forwardHandler)
         self.probe_forward_image.visible = False
         all_sprites.add(self.probe_forward_image, layer =70)
 
-        self.probe_aft_image = LcarsImage("assets/probe_rear.png", (172, 150), self.aftHandler)
+        self.probe_aft_image = LcarsImageButton("assets/probe_rear.png", (172, 150), self.aftHandler)
         self.probe_aft_image.visible = False
         all_sprites.add(self.probe_aft_image, layer=70)
 

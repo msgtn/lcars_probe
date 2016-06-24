@@ -168,6 +168,7 @@ class ScreenMain(LcarsScreen):
         ##### Forward Section #####
         all_sprites.add(LcarsText(colours.RED_BROWN, (142, 140), "Select a component for more information", 1.25), layer=71)
         self.forward_text = all_sprites.get_sprites_from_layer(71)
+        self.forward_text.visible = False
 
         self.forward_plate = LcarsImage("assets/forward/front_section.png", (172, 533))
         self.forward_plate.visible = False

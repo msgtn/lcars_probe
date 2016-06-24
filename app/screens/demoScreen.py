@@ -8,7 +8,7 @@ from ui.widgets.gifimage import LcarsGifImage
 from ui.widgets.lcars_widgets import LcarsText, LcarsButton, LcarsBlockHuge, LcarsBlockLarge, LcarsBlockSmall, LcarsTabBlock, LcarsElbow
 from ui.widgets.screen import LcarsScreen
 from ui.widgets.sprite import LcarsMoveToMouse
-from ui import arduinosend
+from ui.ui import arduinosend
 import time
 
 class ScreenDemo(LcarsScreen):

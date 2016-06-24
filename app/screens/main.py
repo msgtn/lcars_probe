@@ -310,7 +310,6 @@ class ScreenMain(LcarsScreen):
     def demoHandler(self, item, event, clock):
         door_bl(a, 1)
         self.fwoosh.play()
-        time.sleep(10)
         for i in range(60, 0, -10):
             blue_thruster(a, 1)
             time.sleep(0.1)

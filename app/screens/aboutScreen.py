@@ -74,32 +74,35 @@ class ScreenAbout(LcarsScreen):
         all_sprites.add(self.sources, layer=4)
 
         # Purpose
-        all_sprites.add(LcarsText(colours.WHITE, (192, 140), "To make the poor engineering students stressed out", 1.25),
-                        layer=5)
+        all_sprites.add(LcarsText(colours.WHITE, (172, 140), "To inspire the next generation of STEAM", 2.7), layer=3) 
+        all_sprites.add(LcarsText(colours.WHITE, (217, 140), "(science, technology, engineering, art,", 2.7), layer=3)
+        all_sprites.add(LcarsText(colours.WHITE, (262, 140), "mathematics) students to innovate with", 2.7), layer=3)
+        all_sprites.add(LcarsText(colours.WHITE, (307, 140), "unique projects and boldly go where no", 2.7), layer=3)
+        all_sprites.add(LcarsText(colours.WHITE, (352, 140), "one has gone before.", 2.7), layer=3)
         #all_sprites.add(LcarsText(colours.BLUE, (244, 174), "TO THE Museum of Science Fiction", 1),
         #                layer=3)
         #all_sprites.add(LcarsText(colours.BLUE, (286, 174), "LONG RANGE PROBE EXHIBIT", 1),
         #                layer=3)
         #all_sprites.add(LcarsText(colours.BLUE, (330, 174), "LOOK AROUND", 1),
         #                layer=3)
-        self.purpose_text = all_sprites.get_sprites_from_layer(5)
+        self.purpose_text = all_sprites.get_sprites_from_layer(3)
         self.hideText(self.purpose_text) 
 
         # Details
         all_sprites.add(LcarsText(colours.ORANGE, (192, 140), "LENGTH: ", 1.25), layer=6)
         all_sprites.add(LcarsText(colours.WHITE, (192, 220), "1.5 m (4 ft 6 in)", 1.25), layer=6)
         all_sprites.add(LcarsText(colours.ORANGE, (212, 140), "WIDTH: ", 1.25), layer=6)
-        all_sprites.add(LcarsText(colours.WHITE, (212, 220), "0.45 m (blah)", 1.25), layer=6)
+        all_sprites.add(LcarsText(colours.WHITE, (212, 220), "0.45 m (1 ft 6 in)", 1.25), layer=6)
         all_sprites.add(LcarsText(colours.ORANGE, (232, 140), "HEIGHT: ", 1.25), layer=6)
-        all_sprites.add(LcarsText(colours.WHITE, (232, 220), "0.25 m (blah)", 1.25), layer=6)
+        all_sprites.add(LcarsText(colours.WHITE, (232, 220), "0.25 m (10 in)", 1.25), layer=6)
         all_sprites.add(LcarsText(colours.ORANGE, (252, 140), "MASS: ", 1.25), layer=6)
         all_sprites.add(LcarsText(colours.WHITE, (252, 220), "20 kg (30 slugs)", 1.25), layer=6)
         all_sprites.add(LcarsText(colours.ORANGE, (292, 140), "MATERIALS: ", 1.25), layer=6)
-        all_sprites.add(LcarsText(colours.WHITE, (292, 220), "Carbon fiber reinforced fiberglass shell, internal components 3-D printed PLA plastic", 1.25), layer=6)
+        all_sprites.add(LcarsText(colours.WHITE, (292, 220), "Carbon fiber reinforced fiberglass shell, internal components 3D-printed PLA plastic", 1.25), layer=6)
         all_sprites.add(LcarsText(colours.ORANGE, (332, 140), "CONTROL: ", 1.25), layer=6)
-        all_sprites.add(LcarsText(colours.WHITE, (332, 220), "7 in touchscreen via Rasberry Pi, lights & movement via Arduino Mega", 1.25), layer=6)
+        all_sprites.add(LcarsText(colours.WHITE, (332, 220), "7-inch touchscreen via Rasberry Pi, lights & movement via Arduino Mega", 1.25), layer=6)
         all_sprites.add(LcarsText(colours.ORANGE, (372, 140), "COST: ", 1.25), layer=6)
-        all_sprites.add(LcarsText(colours.WHITE, (372, 220), "$$$", 1.25), layer=6)
+        all_sprites.add(LcarsText(colours.WHITE, (372, 220), "$1,000, 800 man-hours", 1.25), layer=6)
         self.details_text = all_sprites.get_sprites_from_layer(6)
         self.hideText(self.details_text)
 
@@ -115,8 +118,9 @@ class ScreenAbout(LcarsScreen):
 
         # Sources
         all_sprites.add(LcarsText(colours.GREY_BLUE, (192, 140), "SPECIAL THANKS TO:", 1.25), layer=8)
-        all_sprites.add(LcarsText(colours.WHITE, (212, 180), "Toby Kurien", 1.25), layer=8)
-        all_sprites.add(LcarsText(colours.WHITE,(232, 180), "NC State EI Garage", 1.25), layer=8)
+        all_sprites.add(LcarsText(colours.WHITE, (212, 180), "Toby Kurien (creator of LCARS Python Graphical Interface", 1.25), layer=8)
+        all_sprites.add(LcarsText(colours.WHITE, (232, 180), "NC State Mechanical Engineering Department", 1.25), layer=8)
+        all_sprites.add(LcarsText(colours.WHITE,(252, 180), "NC State Entrepreneurship Initiative Garage", 1.25), layer=8)
         self.sources_text = all_sprites.get_sprites_from_layer(8)
         self.hideText(self.sources_text)
         

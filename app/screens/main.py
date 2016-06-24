@@ -289,32 +289,28 @@ class ScreenMain(LcarsScreen):
         self.showText(self.main_text)
             
     def logoutHandler(self, item, event, clock):
-        self.hideAll()
-        
-        self.logout_image.visible = True
-        self.logout_gif.visible = True
-        self.showText(self.logout_text)
+        from screens.authorize import ScreenAuthorize
+        self.loadScreen(ScreenAuthorize())
 
         # PUT TURN OFF COMMAND HERE
 
     def aboutHandler(self, item, event, clock):
-        self.hideAll()
+        from screens.aboutScreen import ScreenAbout
+        self.loadScreen(ScreenAbout())
         
-        self.purpose.visible = True
-        self.details.visible = True
-        self.personnel.visible = True
-        self.sources.visible = True
-
-    #def demoHandler(self, item, event, clock):
-    #    from screens.demoScreen import ScreenDemo
-    #    self.loadScreen(ScreenDemo())
+    def demoHandler(self, item, event, clock):
+        print 'demo'
+#         from screens.demoScreen import ScreenDemo
+#         self.loadScreen(ScreenDemo())
 
     def exploreHandler(self, item, event, clock):
-        self.hideAll()
-        
-        self.showText(self.explore_screen_text)
-        self.probe_forward_image.visible = True
-        self.probe_aft_image.visible = True
+        from screens.exploreScreen import ScreenExplore
+        self.loadScreen(ScreenExplore())
+#         self.hideAll()
+#         
+#         self.showText(self.explore_screen_text)
+#         self.probe_forward_image.visible = True
+#         self.probe_aft_image.visible = True
 
     # ** Sub Screen Handlers ** -----------------------------------------------------------------
 

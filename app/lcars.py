@@ -1,4 +1,4 @@
-from screens.main import ScreenMain
+from screens.main import ScreenMain, LogoutScreen
 from ui.ui import UserInterface
 
 # global config

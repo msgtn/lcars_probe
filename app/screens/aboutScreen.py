@@ -9,6 +9,9 @@ from ui.widgets.lcars_widgets import LcarsText, LcarsButton, LcarsBlockHuge, Lca
 from ui.widgets.screen import LcarsScreen
 from ui.widgets.sprite import LcarsMoveToMouse
 
+from ui.ui import a
+from hardwareHandler import *
+import time
 
 class ScreenAbout(LcarsScreen):
     def setup(self, all_sprites):
@@ -160,7 +163,7 @@ class ScreenAbout(LcarsScreen):
         self.loadScreen(ScreenAuthorize())
 
     def demoHandler(self, item, event, clock):
-        demo()
+        demo(a)
 
     def exploreHandler(self, item, event, clock):
 #         demo()

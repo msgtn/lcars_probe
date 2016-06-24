@@ -198,7 +198,7 @@ class ScreenExplore(LcarsScreen):
             return False
     
     def logoutHandler(self, item, event, clock):
-        demo()
+#         demo()
         from screens.authorize import ScreenAuthorize
         self.loadScreen(ScreenAuthorize())
 
@@ -208,7 +208,7 @@ class ScreenExplore(LcarsScreen):
         self.loadScreen(ScreenAbout())
 
     def demoHandler(self, item, event, clock):
-        demo()
+        demo(a)
 #         from screens.demoScreen import ScreenDemo
 #         self.loadScreen(ScreenDemo())
 

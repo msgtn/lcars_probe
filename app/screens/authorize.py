@@ -7,6 +7,9 @@ from ui.widgets.gifimage import LcarsGifImage
 from ui.widgets.lcars_widgets import LcarsText
 from ui.widgets.screen import LcarsScreen
 
+from ui.ui import a
+from hardwareHandler import *
+import time
 
 class ScreenAuthorize(LcarsScreen):
 

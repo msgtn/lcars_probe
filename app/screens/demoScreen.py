@@ -14,9 +14,9 @@ import time
 
 class ScreenDemo(LcarsScreen):
     def setup(self, all_sprites):
-        servo_pos_test(180)
+        servo_pos_test(a, 180)
         time.sleep(1)
-        servo_pos_test(90)
+        servo_pos_test(a, 90)
         all_sprites.add(LcarsBackgroundImage("assets/lcars_screen_1.png"),
                         layer=0)
         

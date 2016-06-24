@@ -199,13 +199,13 @@ class ScreenExplore(LcarsScreen):
     
     def logoutHandler(self, item, event, clock):
         demo()
-#         from screens.authorize import ScreenAuthorize
-#         self.loadScreen(ScreenAuthorize())
+        from screens.authorize import ScreenAuthorize
+        self.loadScreen(ScreenAuthorize())
 
     def aboutHandler(self, item, event, clock):
-        demo()
-#         from screens.aboutScreen import ScreenAbout
-#         self.loadScreen(ScreenAbout())
+#         demo()
+        from screens.aboutScreen import ScreenAbout
+        self.loadScreen(ScreenAbout())
 
     def demoHandler(self, item, event, clock):
         demo()
@@ -213,15 +213,15 @@ class ScreenExplore(LcarsScreen):
 #         self.loadScreen(ScreenDemo())
 
     def exploreHandler(self, item, event, clock):
-        demo()
+#         demo()
         # Turn off all content here
-#         self.test.visible = False
-#         self.loadScreen(ScreenExplore())
+        self.test.visible = False
+        self.loadScreen(ScreenExplore())
 
     def mainHandler(self, item, event, clock):
-        demo()
-#         from screens.main import ScreenMain
-#         self.loadScreen(ScreenMain())
+#         demo()
+        from screens.main import ScreenMain
+        self.loadScreen(ScreenMain())
 
     ## ****** Explore Screen Handlers ******
 

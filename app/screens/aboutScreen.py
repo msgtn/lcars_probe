@@ -155,22 +155,22 @@ class ScreenAbout(LcarsScreen):
             sprite.visible = True
     
     def logoutHandler(self, item, event, clock):
-        demo()
-#         from screens.authorize import ScreenAuthorize
-#         self.loadScreen(ScreenAuthorize())
+#         demo()
+        from screens.authorize import ScreenAuthorize
+        self.loadScreen(ScreenAuthorize())
 
     def demoHandler(self, item, event, clock):
         demo()
 
     def exploreHandler(self, item, event, clock):
-        demo()
-#         from screens.exploreScreen import ScreenExplore
-#         self.loadScreen(ScreenExplore())
+#         demo()
+        from screens.exploreScreen import ScreenExplore
+        self.loadScreen(ScreenExplore())
 
     def mainHandler(self, item, event, clock):
-        demo()
-#         from screens.main import ScreenMain
-#         self.loadScreen(ScreenMain())
+#         demo()
+        from screens.main import ScreenMain
+        self.loadScreen(ScreenMain())
 
     ## Specific Screen Handlers
         

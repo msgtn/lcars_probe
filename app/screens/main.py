@@ -293,29 +293,29 @@ class ScreenMain(LcarsScreen):
     # ** Screen Handlers ** --------------------------------------------------------------------
 
     def mainHandler(self, item, event, clock):
-        demo(a)
-#         self.hideAll()
-#         self.showText(self.main_text)
+#         demo(a)
+        self.hideAll()
+        self.showText(self.main_text)
             
     def logoutHandler(self, item, event, clock):
-        demo(a)
-#         from screens.authorize import ScreenAuthorize
-#         self.loadScreen(ScreenAuthorize())
+#         demo(a)
+        from screens.authorize import ScreenAuthorize
+        self.loadScreen(ScreenAuthorize())
 
         # PUT TURN OFF COMMAND HERE
 
     def aboutHandler(self, item, event, clock):
-        demo(a)
-#         from screens.aboutScreen import ScreenAbout
-#         self.loadScreen(ScreenAbout())
+#         demo(a)
+        from screens.aboutScreen import ScreenAbout
+        self.loadScreen(ScreenAbout())
         
     def demoHandler(self, item, event, clock):
         demo(a)
 
     def exploreHandler(self, item, event, clock):
-        demo(a)
-#         from screens.exploreScreen import ScreenExplore
-#         self.loadScreen(ScreenExplore())
+#         demo(a)
+        from screens.exploreScreen import ScreenExplore
+        self.loadScreen(ScreenExplore())
 #         self.hideAll()
 #         
 #         self.showText(self.explore_screen_text)

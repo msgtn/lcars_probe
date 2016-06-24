@@ -324,6 +324,7 @@ class ScreenMain(LcarsScreen):
         time.sleep(1)
         cont(a, 0)
         white_dome(a, 0)
+        areset(a)
 #         from screens.demoScreen import ScreenDemo
 #         self.loadScreen(ScreenDemo())
 

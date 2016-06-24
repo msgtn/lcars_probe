@@ -8,7 +8,8 @@ FPS = 60
 DEV_MODE = True
 
 from hardwareHandler import *
-global a = connect_arduino()
+global a
+a = connect_arduino()
 
 if __name__ == "__main__":
     firstScreen = ScreenMain()

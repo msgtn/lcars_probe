@@ -8,7 +8,7 @@ FPS = 60
 DEV_MODE = True
 
 from hardwareHandler import *
-global a
+
 a = connect_arduino()
 
 if __name__ == "__main__":

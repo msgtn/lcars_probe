@@ -50,7 +50,7 @@ class ScreenMain(LcarsScreen):
         
         # Sounds
         self.beep_1 = Sound("assets/audio/panel/201.wav")
-        self.takeoff = Sound("assets/audio/panel/takeoff.mp3")
+        self.takeoff = Sound("assets/audio/panel/takeoff.wav")
         #Sound("assets/audio/panel/220.wav").play()
 
         #-----Screens-----#

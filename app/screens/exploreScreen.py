@@ -306,27 +306,52 @@ class ScreenExplore(LcarsScreen):
         self.hideText(self.explore_screen_text)
         self.probe_forward_image.visible = False
         self.probe_aft_image.visible = False
+        self.forward_button.visible = False
+        
+        self.hideText(self.communication_text)
+        self.hideText(self.sensor_text)
+        self.hideText(self.computer_text)
+        self.hideText(self.chip_text)
+        self.hideText(self.fusion_text)
+        
+        self.showText(self.forward_text)
+        self.aft_button.visible = True        
+        #Put others here
+        self.forward_plate.visible = True
 
     def aftHandler(self, item, event, clock):
         self.hideText(self.explore_screen_text)
         self.probe_forward_image.visible = False
         self.probe_aft_image.visible = False
 
+        self.showText(propulsion_text)
+        self.aft_button.visible = True
+
     # ** Forward **
     def communicationsHandler(self, item, event, clock):
-        self.test.visible = False
+        self.showText(self.communication_text)
+        self.aft_button.visible = False
+        self.forward_button.visible = True
 
     def sensorsHandler(self, item, event, clock):
-        self.hideText(self.sensor_text)
+        self.showText(sensor_text)
+        self.aft_button.visible = False
+        self.forward_button.visible = True
 
     def computerHandler(self, item, event, clock):
-        self.test.visible = False
+        self.showText(computer_text)
+        self.aft_button.visible = False
+        self.forward_button.visible = True
 
     def chipsHandler(self, item, event, clock):
-        self.test.visible = False
+        self.showText(chip_text)
+        self.aft_button.visible = False
+        self.forward_button.visible = True
 
     def powerHandler(self, item, event, clock):
-        self.test.visible = False
+        self.showText(fusion_text)
+        self.aft_button.visible = False
+        self.forward_button.visible = True
 
     # ** Aft **
     def thrustersHandler(self, item, event, clock):

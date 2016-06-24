@@ -9,6 +9,10 @@ from ui.widgets.lcars_widgets import LcarsText, LcarsButton, LcarsBlockHuge, Lca
 from ui.widgets.screen import LcarsScreen
 from ui.widgets.sprite import LcarsMoveToMouse
 
+from ui.ui import a
+from hardwareHandler import *
+import time
+
 class ScreenExplore(LcarsScreen):
     def setup(self, all_sprites):
         
@@ -268,6 +272,20 @@ class ScreenExplore(LcarsScreen):
         self.showText(self.propulsion_text)
         self.aft_button.visible = False
         
+        door_br(a, 1)
+        door_bl(a, 1)
+        
+        for i in range(60, 0, -10):
+            blue_thruster(a, 1)
+            time.sleep(float(i)/100)
+            red_thruster(a, 1)
+            time.sleep(float(i)/200)
+            blue_thruster(a, 0)
+            time.sleep(float(i)/100)
+            red_thruster(a, 0)
+            
+        blue_thruster(a, 1)
+        red_thruster(a, 1)
         
 
     # ** Forward **

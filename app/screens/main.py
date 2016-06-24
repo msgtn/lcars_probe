@@ -83,7 +83,7 @@ class ScreenMain(LcarsScreen):
         self.showText(self.main_text)
             
     def logoutHandler(self, item, event, clock):
-#         self.loadScreen(self, LogoutScreen)
+        self.loadScreen(self, LogoutScreen)
 #         self.getNextScreen()
 #         self.hideAll()
         

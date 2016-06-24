@@ -13,6 +13,10 @@ from ui.widgets.sprite import LcarsMoveToMouse, LcarsWidget
 #ser = serial.Serial('/dev/ttyACM0', 9600)
 # USE LIKE THIS: ser.write('1')
 
+from ui.ui import a
+from hardwareHandler import *
+import time
+
 class ScreenMain(LcarsScreen):
     def setup(self, all_sprites):
 
@@ -37,8 +41,8 @@ class ScreenMain(LcarsScreen):
                         layer=1)
         all_sprites.add(LcarsBlockSmall(colours.ORANGE, (211, 16), "ABOUT", self.aboutHandler),
                         layer=1)
-        #all_sprites.add(LcarsBlockLarge(colours.BLUE, (145, 16), "DEMO", self.demoHandler),
-        #                layer=1)
+        all_sprites.add(LcarsBlockLarge(colours.BLUE, (145, 16), "DEMO", self.demoHandler),
+                        layer=1)
         all_sprites.add(LcarsBlockHuge(colours.PEACH, (249, 16), "EXPLORE", self.exploreHandler),
                         layer=1)
         all_sprites.add(LcarsElbow(colours.BEIGE, (400, 16), "MAIN"),
@@ -300,7 +304,25 @@ class ScreenMain(LcarsScreen):
         self.loadScreen(ScreenAbout())
         
     def demoHandler(self, item, event, clock):
-        print 'demo'
+        door_bl(a, 1)
+        for i in range(60, 0, -10):
+            blue_thruster(a, 1)
+            time.sleep(0.1)
+            blue_thruster(a, 0)
+            time.sleep(float(i)/100)
+        red_thruster(a, 1)
+        time.sleep(1)
+        door_fl(a, 1)
+        for i in range(0, 5):
+            yellow_dome(a, 1)
+            time.sleep(0.5)
+            yellow_dome(a, 0)
+            glass(a, 1)
+            time.sleep(0.5)
+            glass(a, 0)
+            white_dome(a, 1)
+            cont(a, (i%2)+1)
+            time.sleep(1)
 #         from screens.demoScreen import ScreenDemo
 #         self.loadScreen(ScreenDemo())
 

@@ -100,6 +100,14 @@ def door_bl(a, open_close):
     else:
         asend(a, '\'')
     time.sleep(1)
+    
+def cont(a, dir):
+    if (dir == 0):
+        asend(a, 'x')
+    elif (dir == 1):
+        asend(a, 'z')
+    elif (dir == 2):
+        asend(a, 'c')    
 
 def servo_pos_test(a, ang):
     a.write(str(ang))

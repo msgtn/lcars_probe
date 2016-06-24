@@ -44,5 +44,5 @@ class LcarsImage(LcarsWidget):
                 self.handler(self, event, clock)
                 handled = True
 
-        LcarsWidget.handleEvent(self,event, clock)
+        LcarsWidget.handleEvent(self, event, clock)
         return handled

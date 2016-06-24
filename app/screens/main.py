@@ -51,7 +51,7 @@ class ScreenMain(LcarsScreen):
                         layer=1)
         all_sprites.add(LcarsBlockHuge(colours.PEACH, (249, 16), "EXPLORE", self.exploreHandler),
                         layer=1)
-        all_sprites.add(LcarsElbow(colours.BEIGE, (400, 16), "MAIN"),
+        all_sprites.add(LcarsElbow(colours.BEIGE, (400, 16), "MAIN"), self.mainHandler
                         layer=1)
         
         # Sounds
@@ -252,7 +252,26 @@ class AboutScreen(LcarsScreen):
         all_sprites.add(LcarsText(colours.WHITE,(252, 180), "NC State Entrepreneurship Initiative Garage", 1.25), layer=8)
         self.sources_text = all_sprites.get_sprites_from_layer(8)
         self.hideText(self.sources_text)
+        
+        
 
+    def update(self, screenSurface, fpsClock):
+        if pygame.time.get_ticks() - self.lastClockUpdate > 1000:
+            self.stardate.setText("EARTH DATE {}".format(datetime.now().strftime("%m.%d.%y %H:%M:%S")))
+            self.lastClockUpdate = pygame.time.get_ticks()
+        LcarsScreen.update(self, screenSurface, fpsClock)
+        
+    def handleEvents(self, event, fpsClock):
+        LcarsScreen.handleEvents(self, event, fpsClock)
+        
+        if event.type == pygame.MOUSEBUTTONDOWN:
+            self.beep_1.play()
+
+        if event.type == pygame.MOUSEBUTTONUP:
+            return False
+
+def ExploreScreen(LcarsScreen):
+    def setup(self, all_sprites):
         # Explore Screen ---------------------------------------------------------------------------------
 
         all_sprites.add(LcarsText(colours.RED_BROWN, (142, 140), "Select a section for more information", 1.25), layer=70)

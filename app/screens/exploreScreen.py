@@ -212,7 +212,8 @@ class ScreenExplore(LcarsScreen):
 
     def exploreHandler(self, item, event, clock):
         # Turn off all content here
-        self.test.visible = False
+#         self.test.visible = False
+        self.loadScreen(ScreenExplore())
 
     def mainHandler(self, item, event, clock):
         from screens.main import ScreenMain
@@ -269,6 +270,8 @@ class ScreenExplore(LcarsScreen):
 
         self.showText(self.propulsion_text)
         self.aft_button.visible = True
+        
+        
 
     # ** Forward **
     def communicationsHandler(self, item, event, clock):

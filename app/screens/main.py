@@ -2,8 +2,6 @@ from datetime import datetime
 import pygame
 from pygame.mixer import Sound
 
-import time
-
 from ui import colours
 from ui.widgets.background import LcarsBackgroundImage, LcarsImage
 from ui.widgets.gifimage import LcarsGifImage
@@ -11,8 +9,18 @@ from ui.widgets.lcars_widgets import LcarsText, LcarsButton, LcarsBlockHuge, Lca
 from ui.widgets.screen import LcarsScreen
 from ui.widgets.sprite import LcarsMoveToMouse, LcarsWidget
 
+import time
 import serial
-arduino = serial.Serial('/dev/ttyACM0', 9600)
+
+from hardwareHandler import *
+a = connect_arduino()
+# try to connect to the arduino
+#a_exist = False
+#try:
+#    a = serial.Serial('/dev/ttyACM0', 9600)
+#    a_exist = True
+#except:
+#    pass
 # USE LIKE THIS: ser.write('1')
 
 class ScreenMain(LcarsScreen):
@@ -39,8 +47,8 @@ class ScreenMain(LcarsScreen):
                         layer=1)
         all_sprites.add(LcarsBlockSmall(colours.ORANGE, (211, 16), "ABOUT", self.aboutHandler),
                         layer=1)
-        #all_sprites.add(LcarsBlockLarge(colours.BLUE, (145, 16), "DEMO", self.demoHandler),
-        #                layer=1)
+        all_sprites.add(LcarsBlockLarge(colours.BLUE, (145, 16), "DEMO", self.demoHandler),
+                        layer=1)
         all_sprites.add(LcarsBlockHuge(colours.PEACH, (249, 16), "EXPLORE", self.exploreHandler),
                         layer=1)
         all_sprites.add(LcarsElbow(colours.BEIGE, (400, 16), "MAIN"),
@@ -87,25 +95,28 @@ class ScreenMain(LcarsScreen):
 
         # About Screen -----------------------------------------------------------------------------------
         self.purpose = LcarsButton(colours.GREY_BLUE, (107, 127), "PURPOSE", self.purposeHandler)
-        self.purpose.visible = True
+        self.purpose.visible = False
         all_sprites.add(self.purpose, layer=4)
 
         self.details = LcarsButton(colours.ORANGE, (107, 262), "DETAILS", self.detailsHandler)
-        self.details.visible = True
+        self.details.visible = False
         all_sprites.add(self.details, layer=4)
 
         self.personnel = LcarsButton(colours.GREY_BLUE, (107, 398), "PERSONNEL", self.personnelHandler)
-        self.personnel.visible = True
+        self.personnel.visible = False
         all_sprites.add(self.personnel, layer=4)
 
         self.sources = LcarsButton(colours.ORANGE, (107, 533), "SOURCES", self.sourcesHandler)
-        self.sources.visible = True
+        self.sources.visible = False
         all_sprites.add(self.sources, layer=4)
 
         
         # Purpose
-        all_sprites.add(LcarsText(colours.WHITE, (192, 140), "To make the poor engineering students stressed out", 1.25),
-                        layer=5)
+        all_sprites.add(LcarsText(colours.WHITE, (172, 140), "To inspire the next generation of STEAM", 2.7), layer=5) 
+        all_sprites.add(LcarsText(colours.WHITE, (217, 140), "(science, technology, engineering, art,", 2.7), layer=5)
+        all_sprites.add(LcarsText(colours.WHITE, (262, 140), "mathematics) students to innovate with", 2.7), layer=5)
+        all_sprites.add(LcarsText(colours.WHITE, (307, 140), "unique projects and boldly go where no", 2.7), layer=5)
+        all_sprites.add(LcarsText(colours.WHITE, (352, 140), "one has gone before.", 2.7), layer=5)
         #all_sprites.add(LcarsText(colours.BLUE, (244, 174), "TO THE Museum of Science Fiction", 1),
         #                layer=3)
         #all_sprites.add(LcarsText(colours.BLUE, (286, 174), "LONG RANGE PROBE EXHIBIT", 1),
@@ -119,17 +130,17 @@ class ScreenMain(LcarsScreen):
         all_sprites.add(LcarsText(colours.ORANGE, (192, 140), "LENGTH: ", 1.25), layer=6)
         all_sprites.add(LcarsText(colours.WHITE, (192, 220), "1.5 m (4 ft 6 in)", 1.25), layer=6)
         all_sprites.add(LcarsText(colours.ORANGE, (212, 140), "WIDTH: ", 1.25), layer=6)
-        all_sprites.add(LcarsText(colours.WHITE, (212, 220), "0.45 m (blah)", 1.25), layer=6)
+        all_sprites.add(LcarsText(colours.WHITE, (212, 220), "0.45 m (1 ft 6 in)", 1.25), layer=6)
         all_sprites.add(LcarsText(colours.ORANGE, (232, 140), "HEIGHT: ", 1.25), layer=6)
-        all_sprites.add(LcarsText(colours.WHITE, (232, 220), "0.25 m (blah)", 1.25), layer=6)
+        all_sprites.add(LcarsText(colours.WHITE, (232, 220), "0.25 m (10 in)", 1.25), layer=6)
         all_sprites.add(LcarsText(colours.ORANGE, (252, 140), "MASS: ", 1.25), layer=6)
         all_sprites.add(LcarsText(colours.WHITE, (252, 220), "20 kg (30 slugs)", 1.25), layer=6)
         all_sprites.add(LcarsText(colours.ORANGE, (292, 140), "MATERIALS: ", 1.25), layer=6)
-        all_sprites.add(LcarsText(colours.WHITE, (292, 220), "Carbon fiber reinforced fiberglass shell, internal components 3-D printed PLA plastic", 1.25), layer=6)
+        all_sprites.add(LcarsText(colours.WHITE, (292, 220), "Carbon fiber reinforced fiberglass shell, internal components 3D-printed PLA plastic", 1.25), layer=6)
         all_sprites.add(LcarsText(colours.ORANGE, (332, 140), "CONTROL: ", 1.25), layer=6)
-        all_sprites.add(LcarsText(colours.WHITE, (332, 220), "7 in touchscreen via Rasberry Pi, lights & movement via Arduino Mega", 1.25), layer=6)
+        all_sprites.add(LcarsText(colours.WHITE, (332, 220), "7-inch touchscreen via Rasberry Pi, lights & movement via Arduino Mega", 1.25), layer=6)
         all_sprites.add(LcarsText(colours.ORANGE, (372, 140), "COST: ", 1.25), layer=6)
-        all_sprites.add(LcarsText(colours.WHITE, (372, 220), "$$$", 1.25), layer=6)
+        all_sprites.add(LcarsText(colours.WHITE, (372, 220), "$1,000, 800 man-hours", 1.25), layer=6)
         self.details_text = all_sprites.get_sprites_from_layer(6)
         self.hideText(self.details_text)
 
@@ -145,11 +156,11 @@ class ScreenMain(LcarsScreen):
 
         # Sources
         all_sprites.add(LcarsText(colours.GREY_BLUE, (192, 140), "SPECIAL THANKS TO:", 1.25), layer=8)
-        all_sprites.add(LcarsText(colours.WHITE, (212, 180), "Toby Kurien", 1.25), layer=8)
-        all_sprites.add(LcarsText(colours.WHITE,(232, 180), "NC State EI Garage", 1.25), layer=8)
+        all_sprites.add(LcarsText(colours.WHITE, (212, 180), "Toby Kurien (creator of LCARS Python Graphical Interface", 1.25), layer=8)
+        all_sprites.add(LcarsText(colours.WHITE, (232, 180), "NC State Mechanical Engineering Department", 1.25), layer=8)
+        all_sprites.add(LcarsText(colours.WHITE,(252, 180), "NC State Entrepreneurship Initiative Garage", 1.25), layer=8)
         self.sources_text = all_sprites.get_sprites_from_layer(8)
         self.hideText(self.sources_text)
-
 
         # Explore Screen ---------------------------------------------------------------------------------
 
@@ -157,30 +168,34 @@ class ScreenMain(LcarsScreen):
         self.explore_screen_text = all_sprites.get_sprites_from_layer(70)
         self.hideText(self.explore_screen_text)
         
-        self.probe_forward_image = LcarsImage("assets/probe_front.png", (172, 533), self.forwardHandler)
+        self.probe_forward_image = LcarsImage("assets/forward_section.png", (172, 500), self.forwardHandler)
         self.probe_forward_image.visible = False
         all_sprites.add(self.probe_forward_image, layer =70)
 
-        self.probe_aft_image = LcarsImage("assets/probe_rear.png", (172, 200), self.aftHandler)
+        self.probe_aft_image = LcarsImage("assets/probe_rear.png", (172, 150), self.aftHandler)
         self.probe_aft_image.visible = False
         all_sprites.add(self.probe_aft_image, layer=70)
-        
+
 
 
         ##### Forward Section #####
-        
         all_sprites.add(LcarsText(colours.RED_BROWN, (142, 140), "Select a component for more information", 1.25), layer=71)
-        self.about_text = all_sprites.get_sprites_from_layer(71)
+        self.forward_text = all_sprites.get_sprites_from_layer(71)
 
         self.forward_plate = LcarsImage("assets/forward/front_section.png", (172, 533))
         self.forward_plate.visible = False
         all_sprites.add(self.probe_forward_image, layer =71)
-        
-        ## Back Button ##
-        self.aft_port = LcarsTabBlock(colours.RED_BROWN, (372, 650), "BACK", self.backForwardHandler)
-        self.aft_port.visible = True
-        all_sprites.add(self.aft_port, layer=60)
-        
+
+        ## Back Forward Button ##
+        self.forward_button = LcarsTabBlock(colours.RED_BROWN, (372, 500), "BACK", self.forwardHandler)
+        self.forward_button.visible = False
+        all_sprites.add(self.forward_button, layer=60)
+
+        ## Back Aft Button ##
+        self.aft_button = LcarsTabBlock(colours.RED_BROWN, (372, 150), "BACK", self.exploreHandler)
+        self.aft_button.visible = False
+        all_sprites.add(self.aft_button, layer=60)
+
         # BTO ARRAY #
         all_sprites.add(LcarsText(colours.WHITE, (112, 140), "B.T.O. ARRAY", 1.75), layer=61)  
         all_sprites.add(LcarsText(colours.ORANGE, (162, 140), "The B.T.O. Array is the primary method of communication for the probe.", 1.25), layer=61)
@@ -279,7 +294,7 @@ class ScreenMain(LcarsScreen):
         if event.type == pygame.MOUSEBUTTONUP:
             return False
 
-    # ** Screen Handlers **
+    # ** Screen Handlers ** --------------------------------------------------------------------
 
     def mainHandler(self, item, event, clock):
         self.hideAll()
@@ -293,51 +308,61 @@ class ScreenMain(LcarsScreen):
         self.logout_gif.visible = True
         self.showText(self.logout_text)
 
-    def aboutHandler(self, item, event, clock):        
-        self.hideText(self.purpose_text)
-        self.hideText(self.details_text)
-        self.hideText(self.personnel_text)
-        self.personnel_image1.visible = False
-        self.hideText(self.sources_text)
+        # PUT TURN OFF COMMAND HERE
 
     def demoHandler(self, item, event, clock):
-        from screens.demoScreen import ScreenDemo
-        self.loadScreen(ScreenDemo())
-        for i in range(1, 0, -0.1):
-            arduino.write('qwert')
-            time.sleep(i)
-            arduino.write('asdfg')
-            time.sleep(i)
-        arduino.write('qwert')
+        #from screens.demoScreen import ScreenDemo
+        #self.loadScreen(ScreenDemo())
+        '''
+        servo_pos_test(a, 90)
         
-        arduino.write('i')
-        time.sleep(2)
-        arduino.write('k')
-        time.sleep(2)
-        arduino.write('o')
-        time.sleep(2)
-        arduino.write('l')
-        time.sleep(2)
-        arduino.write('p')
-        time.sleep(2)
-        arduino.write(';')
-        time.sleep(2)
-        arduino.write('[')
-        time.sleep(2)
-        arduino.write('\'')
-        time.sleep(2)
+        servo_pos_test(a, 180)
+        
+        servo_pos_test(a, 90)
+        
+        servo_pos_test(a, 0)
+        
+        servo_pos_test(a, 90)
+        '''
 
-        arduino.write('z')
-        time.sleep(3)
-        arduino.write('c')
-        time.sleep(3)
-        arduino.write('x')
+        for j in range(60, 0, -20):
+            for i in range(1, 6):
+                control_led(a, i, 1)
+                time.sleep(float(j)/100)
+                control_led(a, i, 0)
+                
+
+        door_fr(a, 1)
+        door_fl(a, 1)
+        door_br(a, 1)
+        door_bl(a, 1)
+        door_fr(a, 0)
+        door_fl(a, 0)
+        door_br(a, 0)
+        door_bl(a, 0)
+
         
+        
+    def aboutHandler(self, item, event, clock):
+        self.hideAll()
+        
+        self.purpose.visible = True
+        self.details.visible = True
+        self.personnel.visible = True
+        self.sources.visible = True
+
+    #def demoHandler(self, item, event, clock):
+    #    from screens.demoScreen import ScreenDemo
+    #    self.loadScreen(ScreenDemo())
+
     def exploreHandler(self, item, event, clock):
-        from screens.exploreScreen import ScreenExplore
-        self.loadScreen(ScreenExplore())
+        self.hideAll()
+        
+        self.showText(self.explore_screen_text)
+        self.probe_forward_image.visible = True
+        self.probe_aft_image.visible = True
 
-    # ** Sub Screen Handlers **
+    # ** Sub Screen Handlers ** -----------------------------------------------------------------
 
     #       About Screen -------------------------------------
     def purposeHandler(self, item, event, clock):
@@ -376,32 +401,57 @@ class ScreenMain(LcarsScreen):
         self.hideText(self.explore_screen_text)
         self.probe_forward_image.visible = False
         self.probe_aft_image.visible = False
+        self.forward_button.visible = False
+        
+        self.hideText(self.communication_text)
+        self.hideText(self.sensor_text)
+        self.hideText(self.computer_text)
+        self.hideText(self.chip_text)
+        self.hideText(self.fusion_text)
+        
+        self.showText(self.forward_text)
+        self.aft_button.visible = True        
+        #Put others here
+        self.forward_plate.visible = True
 
     def aftHandler(self, item, event, clock):
+        self.hideAll()
         self.hideText(self.explore_screen_text)
         self.probe_forward_image.visible = False
         self.probe_aft_image.visible = False
-
-    def backForwardHandler(self, item, event, clock):
-        self.hideText(self.explore_screen_text)
-        self.probe_forward_image.visible = True
-        self.probe_aft_image.visible = True
+        red_thruster(a, 1)
+        time.sleep(1)
+        red_thruster(a, 0)
+        self.showText(propulsion_text)
+        self.aft_button.visible = True
 
     # ** Forward **
     def communicationsHandler(self, item, event, clock):
-        self.test.visible = False
+        self.showText(self.communication_text)
+        self.aft_button.visible = False
+        self.forward_button.visible = True
 
     def sensorsHandler(self, item, event, clock):
-        self.hideText(self.sensor_text)
+        self.showText(sensor_text)
+        self.aft_button.visible = False
+        self.forward_button.visible = True
 
     def computerHandler(self, item, event, clock):
-        self.test.visible = False
+        self.showText(computer_text)
+        self.aft_button.visible = False
+        self.forward_button.visible = True
 
     def chipsHandler(self, item, event, clock):
-        self.test.visible = False
+        self.showText(chip_text)
+        self.aft_button.visible = False
+        self.forward_button.visible = True
 
     def powerHandler(self, item, event, clock):
-        self.test.visible = False
+        self.showText(fusion_text)
+        self.aft_button.visible = False
+        self.forward_button.visible = True
+
+
 
 
 
@@ -424,25 +474,30 @@ class ScreenMain(LcarsScreen):
         self.logout_gif.visible = False
         self.hideText(self.logout_text)
         #ABOUT
+        self.purpose.visible = False
+        self.details.visible = False
+        self.personnel.visible = False
+        self.sources.visible = False        
         self.hideText(self.purpose_text)
         self.hideText(self.details_text)
         self.hideText(self.personnel_text)
         self.personnel_image1.visible = False
         self.hideText(self.sources_text)
-
         #EXPLORE
+        self.probe_forward_image.visible = False
+        self.probe_aft_image.visible = False
+        self.forward_plate.visible = False
+        self.aft_button.visible = False
+        self.forward_button.visible = False
+        self.hideText(self.explore_screen_text)
+        self.hideText(self.forward_text)
+        self.hideText(self.propulsion_text)
+        self.hideText(self.communication_text)
+        self.hideText(self.sensor_text)
+        self.hideText(self.computer_text)
+        self.hideText(self.chip_text)
+        self.hideText(self.fusion_text)
 
-            #Forward
-                #Communications
-                #Sensors
-                #Computer
-                #Chips
-                #Power
-            #Aft
-                #Thrusters
-                #Drive
-                #Tanks
-                #Impulse
 
 
         

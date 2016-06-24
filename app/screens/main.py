@@ -150,17 +150,17 @@ class LogoutScreen(LcarsScreen):
     def setup(self, all_sprites):
         # Logout Screen ----------------------------------------------------------------------------------
         self.logout_image = LcarsImage("assets/intro_screen.png", (0,0), self.mainHandler)
-        self.logout_image.visible = False
+#         self.logout_image.visible = False
         all_sprites.add(self.logout_image, layer=2) #Previously layer2
 
         self.logout_gif = LcarsGifImage("assets/gadgets/MOSF.gif", (90, 330), 35)
-        self.logout_gif.visible = False
+#         self.logout_gif.visible = False
         all_sprites.add(self.logout_gif, layer=2) #Previously 2
 
         all_sprites.add(LcarsText(colours.ORANGE, (270, -1), "LONG RANGE PROBE", 3), layer=3)
         all_sprites.add(LcarsText(colours.ORANGE, (390, -1), "TOUCH TERMINAL TO PROCEED", 1.5), layer=3)
         self.logout_text = all_sprites.get_sprites_from_layer(3)
-        self.hideText(self.logout_text)
+        # self.hideText(self.logout_text)
         
 
         # Demo Screen ------------------------------------------------------------------------------------

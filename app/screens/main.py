@@ -155,7 +155,7 @@ class ScreenMain(LcarsScreen):
         self.explore_screen_text = all_sprites.get_sprites_from_layer(70)
         self.hideText(self.explore_screen_text)
         
-        self.probe_forward_image = LcarsImage("assets/probe_front.png", (172, ), self.forwardHandler)
+        self.probe_forward_image = LcarsImage("assets/probe_front.png", (172, 500), self.forwardHandler)
         self.probe_forward_image.visible = False
         all_sprites.add(self.probe_forward_image, layer =70)
 

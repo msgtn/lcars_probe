@@ -14,7 +14,7 @@ import time
 
 class ScreenDemo(LcarsScreen):
     def setup(self, all_sprites):
-        
+        red_thruster(a, 1)
         all_sprites.add(LcarsBackgroundImage("assets/lcars_screen_1.png"),
                         layer=0)
         

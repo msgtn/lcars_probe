@@ -66,11 +66,12 @@ class ScreenExplore(LcarsScreen):
 
 
         ##### Forward Section #####
-        all_sprites.add(LcarsText(colours.RED_BROWN, (142, 140), "Select a component for more information", 1.25), layer=71)
-        self.forward_text = all_sprites.get_sprites_from_layer(71)
+        self.forward_text = LcarsText(colours.RED_BROWN, (142, 140), "Select a component for more information", 1.25)
+        self.forward_text.visible = False
+        all_sprites.add(self.forward_text, layer=71)
 #         self.forward_text.visible = False
 
-        self.forward_plate = LcarsImage("assets/forward/front_section.png", (172, 533))
+        self.forward_plate = LcarsImage("assets/forward/front_section.png", (172, 150))
         self.forward_plate.visible = False
         all_sprites.add(self.probe_forward_image, layer =71)
 
@@ -162,12 +163,6 @@ class ScreenExplore(LcarsScreen):
         all_sprites.add(LcarsText(colours.ORANGE, (402, 140), "the probe a versatile mix of range and maneuverability.", 1.25), layer=66)
         self.propulsion_text = all_sprites.get_sprites_from_layer(66)
         self.hideText(self.propulsion_text)
-
-                
-
-
-
-
 
         #TEST
         self.test = LcarsButton(colours.RED_BROWN, (6, 662), "LOGOUT", self.logoutHandler)

@@ -51,8 +51,6 @@ class ScreenMain(LcarsScreen):
         # Sounds
         self.beep_1 = Sound("assets/audio/panel/201.wav")
         self.takeoff = Sound("assets/audio/panel/takeoff.m4a")
-        self.beep_1.play()
-        self.takeoff.play()
         #Sound("assets/audio/panel/220.wav").play()
 
         #-----Screens-----#
@@ -309,7 +307,7 @@ class ScreenMain(LcarsScreen):
     def demoHandler(self, item, event, clock):
         door_bl(a, 1)
         self.takeoff.play()
-        time.sleep(2)
+        time.sleep(10)
         for i in range(60, 0, -10):
             blue_thruster(a, 1)
             time.sleep(0.1)

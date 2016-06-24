@@ -253,7 +253,8 @@ class ScreenExplore(LcarsScreen):
         self.hideText(self.chip_text)
         self.hideText(self.fusion_text)
         
-        self.showText(self.forward_text)
+#         self.showText(self.forward_text)
+        self.forward_text.visible = True
         self.aft_button.visible = True        
         #Put others here
         self.forward_plate.visible = True

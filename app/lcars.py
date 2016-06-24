@@ -7,7 +7,7 @@ RESOLUTION = (800, 480)
 FPS = 60
 DEV_MODE = True
 
-import hardwareHandler
+from hardwareHandler import *
 a = connect_arduino()
 
 if __name__ == "__main__":

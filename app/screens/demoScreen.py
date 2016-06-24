@@ -9,7 +9,7 @@ from ui.widgets.lcars_widgets import LcarsText, LcarsButton, LcarsBlockHuge, Lca
 from ui.widgets.screen import LcarsScreen
 from ui.widgets.sprite import LcarsMoveToMouse
 
-import hardwareHandler
+from hardwareHandler import *
 
 class ScreenDemo(LcarsScreen):
     def setup(self, all_sprites):

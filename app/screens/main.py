@@ -61,6 +61,22 @@ class ScreenMain(LcarsScreen):
         #-----Screens-----#
         # ** Screen Handlers ** --------------------------------------------------------------------
 
+
+    def update(self, screenSurface, fpsClock):
+        if pygame.time.get_ticks() - self.lastClockUpdate > 1000:
+            self.stardate.setText("EARTH DATE {}".format(datetime.now().strftime("%m.%d.%y %H:%M:%S")))
+            self.lastClockUpdate = pygame.time.get_ticks()
+        LcarsScreen.update(self, screenSurface, fpsClock)
+        
+    def handleEvents(self, event, fpsClock):
+        LcarsScreen.handleEvents(self, event, fpsClock)
+        
+        if event.type == pygame.MOUSEBUTTONDOWN:
+            self.beep_1.play()
+
+        if event.type == pygame.MOUSEBUTTONUP:
+            return False
+            
     def mainHandler(self, item, event, clock):
 #         self.hideAll()
         
@@ -353,21 +369,6 @@ class AboutScreen(LcarsScreen):
         
         
     # ** Event Handlers **
-
-    def update(self, screenSurface, fpsClock):
-        if pygame.time.get_ticks() - self.lastClockUpdate > 1000:
-            self.stardate.setText("EARTH DATE {}".format(datetime.now().strftime("%m.%d.%y %H:%M:%S")))
-            self.lastClockUpdate = pygame.time.get_ticks()
-        LcarsScreen.update(self, screenSurface, fpsClock)
-        
-    def handleEvents(self, event, fpsClock):
-        LcarsScreen.handleEvents(self, event, fpsClock)
-        
-        if event.type == pygame.MOUSEBUTTONDOWN:
-            self.beep_1.play()
-
-        if event.type == pygame.MOUSEBUTTONUP:
-            return False
 
     
     # ** Sub Screen Handlers ** -----------------------------------------------------------------

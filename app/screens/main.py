@@ -59,71 +59,145 @@ class ScreenMain(LcarsScreen):
         #Sound("assets/audio/panel/220.wav").play()
 
         #-----Screens-----#
+        # ** Screen Handlers ** --------------------------------------------------------------------
+
+    def mainHandler(self, item, event, clock):
+#         self.hideAll()
+        
+        self.showText(self.main_text)
+            
+    def logoutHandler(self, item, event, clock):
+        self.loadScreen(self, LogoutScreen)
+#         self.hideAll()
+        
+#         self.logout_image.visible = True
+#         self.logout_gif.visible = True
+#         self.showText(self.logout_text)
+
+        # PUT TURN OFF COMMAND HERE
+
+    def demoHandler(self, item, event, clock):
+        #from screens.demoScreen import ScreenDemo
+        #self.loadScreen(ScreenDemo())
+        '''
+        servo_pos_test(a, 90)
+        
+        servo_pos_test(a, 180)
+        
+        servo_pos_test(a, 90)
+        
+        servo_pos_test(a, 0)
+        
+        servo_pos_test(a, 90)
+        '''
+
+        for j in range(60, 0, -20):
+            for i in range(1, 6):
+                control_led(a, i, 1)
+                time.sleep(float(j)/100)
+                control_led(a, i, 0)
+                
+
+        door_fr(a, 1)
+        door_fl(a, 1)
+        door_br(a, 1)
+        door_bl(a, 1)
+        door_fr(a, 0)
+        door_fl(a, 0)
+        door_br(a, 0)
+        door_bl(a, 0)
 
         
+        
+    def aboutHandler(self, item, event, clock):
+        self.hideAll()
+        
+        self.purpose.visible = True
+        self.details.visible = True
+        self.personnel.visible = True
+        self.sources.visible = True
+
+    #def demoHandler(self, item, event, clock):
+    #    from screens.demoScreen import ScreenDemo
+    #    self.loadScreen(ScreenDemo())
+
+    def exploreHandler(self, item, event, clock):
+        self.hideAll()
+        
+        self.showText(self.explore_screen_text)
+        self.probe_forward_image.visible = True
+        self.probe_aft_image.visible = True
+
+
+      
+class DefaultScreen(LcarsScreen):
+    def setup(self, all_sprites):  
         # Main Screen ------------------------------------------------------------------------------------
         #116-800: 684 : 342
         #90-440 : 350 : 175
         all_sprites.add(LcarsText(colours.WHITE, (192, 174), "WELCOME", 1.5),
-                        layer=3)
+                        layer=2)
         all_sprites.add(LcarsText(colours.BLUE, (244, 174), "TO THE Museum of Science Fiction", 1.5),
-                        layer=3)
+                        layer=2)
         all_sprites.add(LcarsText(colours.BLUE, (286, 174), "LONG RANGE PROBE EXHIBIT", 1.5),
-                        layer=3)
+                        layer=2)
         all_sprites.add(LcarsText(colours.BLUE, (330, 174), "LOOK AROUND", 1.5),
-                        layer=3)
-        self.main_text = all_sprites.get_sprites_from_layer(3)
-
+                        layer=2)
+        self.main_text = all_sprites.get_sprites_from_layer(2)
+        
+class LogoutScreen(LcarsScreen):
+    def setup(self, all_sprites):
         # Logout Screen ----------------------------------------------------------------------------------
         self.logout_image = LcarsImage("assets/intro_screen.png", (0,0), self.mainHandler)
         self.logout_image.visible = False
-        all_sprites.add(self.logout_image, layer=49) #Previously layer2
+        all_sprites.add(self.logout_image, layer=2) #Previously layer2
 
         self.logout_gif = LcarsGifImage("assets/gadgets/MOSF.gif", (90, 330), 35)
         self.logout_gif.visible = False
-        all_sprites.add(self.logout_gif, layer=49) #Previously 2
+        all_sprites.add(self.logout_gif, layer=2) #Previously 2
 
-        all_sprites.add(LcarsText(colours.ORANGE, (270, -1), "LONG RANGE PROBE", 3), layer=50)
-        all_sprites.add(LcarsText(colours.ORANGE, (390, -1), "TOUCH TERMINAL TO PROCEED", 1.5), layer=50)
-        self.logout_text = all_sprites.get_sprites_from_layer(50)
+        all_sprites.add(LcarsText(colours.ORANGE, (270, -1), "LONG RANGE PROBE", 3), layer=3)
+        all_sprites.add(LcarsText(colours.ORANGE, (390, -1), "TOUCH TERMINAL TO PROCEED", 1.5), layer=3)
+        self.logout_text = all_sprites.get_sprites_from_layer(3)
         self.hideText(self.logout_text)
         
 
         # Demo Screen ------------------------------------------------------------------------------------
 
 
-
+class AboutScreen(LcarsScreen):
+    def setup(all_sprites):
         # About Screen -----------------------------------------------------------------------------------
         self.purpose = LcarsButton(colours.GREY_BLUE, (107, 127), "PURPOSE", self.purposeHandler)
         self.purpose.visible = False
-        all_sprites.add(self.purpose, layer=4)
+        all_sprites.add(self.purpose, layer=2)
 
         self.details = LcarsButton(colours.ORANGE, (107, 262), "DETAILS", self.detailsHandler)
         self.details.visible = False
-        all_sprites.add(self.details, layer=4)
+        all_sprites.add(self.details, layer=2)
 
         self.personnel = LcarsButton(colours.GREY_BLUE, (107, 398), "PERSONNEL", self.personnelHandler)
         self.personnel.visible = False
-        all_sprites.add(self.personnel, layer=4)
+        all_sprites.add(self.personnel, layer=2)
 
         self.sources = LcarsButton(colours.ORANGE, (107, 533), "SOURCES", self.sourcesHandler)
         self.sources.visible = False
-        all_sprites.add(self.sources, layer=4)
+        all_sprites.add(self.sources, layer=2)
 
         
         # Purpose
-        all_sprites.add(LcarsText(colours.WHITE, (172, 140), "To inspire the next generation of STEAM", 2.7), layer=5) 
-        all_sprites.add(LcarsText(colours.WHITE, (217, 140), "(science, technology, engineering, art,", 2.7), layer=5)
-        all_sprites.add(LcarsText(colours.WHITE, (262, 140), "mathematics) students to innovate with", 2.7), layer=5)
-        all_sprites.add(LcarsText(colours.WHITE, (307, 140), "unique projects and boldly go where no", 2.7), layer=5)
-        all_sprites.add(LcarsText(colours.WHITE, (352, 140), "one has gone before.", 2.7), layer=5)
+        all_sprites.add(LcarsText(colours.WHITE, (172, 140), "To inspire the next generation of STEAM", 2.7), layer=3) 
+        all_sprites.add(LcarsText(colours.WHITE, (217, 140), "(science, technology, engineering, art,", 2.7), layer=3)
+        all_sprites.add(LcarsText(colours.WHITE, (262, 140), "mathematics) students to innovate with", 2.7), layer=3)
+        all_sprites.add(LcarsText(colours.WHITE, (307, 140), "unique projects and boldly go where no", 2.7), layer=3)
+        all_sprites.add(LcarsText(colours.WHITE, (352, 140), "one has gone before.", 2.7), layer=3)
         #all_sprites.add(LcarsText(colours.BLUE, (244, 174), "TO THE Museum of Science Fiction", 1),
         #                layer=3)
         #all_sprites.add(LcarsText(colours.BLUE, (286, 174), "LONG RANGE PROBE EXHIBIT", 1),
         #                layer=3)
         #all_sprites.add(LcarsText(colours.BLUE, (330, 174), "LOOK AROUND", 1),
         #                layer=3)
-        self.purpose_text = all_sprites.get_sprites_from_layer(5)
+        self.purpose_text = all_sprites.get_sprites_from_layer(3)
         self.hideText(self.purpose_text) 
 
         # Details
@@ -294,74 +368,7 @@ class ScreenMain(LcarsScreen):
         if event.type == pygame.MOUSEBUTTONUP:
             return False
 
-    # ** Screen Handlers ** --------------------------------------------------------------------
-
-    def mainHandler(self, item, event, clock):
-        self.hideAll()
-        
-        self.showText(self.main_text)
-            
-    def logoutHandler(self, item, event, clock):
-        self.hideAll()
-        
-        self.logout_image.visible = True
-        self.logout_gif.visible = True
-        self.showText(self.logout_text)
-
-        # PUT TURN OFF COMMAND HERE
-
-    def demoHandler(self, item, event, clock):
-        #from screens.demoScreen import ScreenDemo
-        #self.loadScreen(ScreenDemo())
-        '''
-        servo_pos_test(a, 90)
-        
-        servo_pos_test(a, 180)
-        
-        servo_pos_test(a, 90)
-        
-        servo_pos_test(a, 0)
-        
-        servo_pos_test(a, 90)
-        '''
-
-        for j in range(60, 0, -20):
-            for i in range(1, 6):
-                control_led(a, i, 1)
-                time.sleep(float(j)/100)
-                control_led(a, i, 0)
-                
-
-        door_fr(a, 1)
-        door_fl(a, 1)
-        door_br(a, 1)
-        door_bl(a, 1)
-        door_fr(a, 0)
-        door_fl(a, 0)
-        door_br(a, 0)
-        door_bl(a, 0)
-
-        
-        
-    def aboutHandler(self, item, event, clock):
-        self.hideAll()
-        
-        self.purpose.visible = True
-        self.details.visible = True
-        self.personnel.visible = True
-        self.sources.visible = True
-
-    #def demoHandler(self, item, event, clock):
-    #    from screens.demoScreen import ScreenDemo
-    #    self.loadScreen(ScreenDemo())
-
-    def exploreHandler(self, item, event, clock):
-        self.hideAll()
-        
-        self.showText(self.explore_screen_text)
-        self.probe_forward_image.visible = True
-        self.probe_aft_image.visible = True
-
+    
     # ** Sub Screen Handlers ** -----------------------------------------------------------------
 
     #       About Screen -------------------------------------

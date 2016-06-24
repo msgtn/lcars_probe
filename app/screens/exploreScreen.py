@@ -259,7 +259,6 @@ class ScreenExplore(LcarsScreen):
 #         self.aft_button.visible = True        
         #Put others here
         self.forward_plate.visible = True
-        self.aftHandler.set_blocked()
 
     def aftHandler(self, item, event, clock):
         self.hideText(self.explore_screen_text)

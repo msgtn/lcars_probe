@@ -280,7 +280,7 @@ class ScreenExplore(LcarsScreen):
         door_br(a, 1)
         door_bl(a, 1)
         
-        for i in range(60, 0, -10):
+        for i in range(60, 0, -15):
             blue_thruster(a, 1)
             time.sleep(float(i)/100)
             red_thruster(a, 1)
@@ -291,6 +291,9 @@ class ScreenExplore(LcarsScreen):
             
         blue_thruster(a, 1)
         red_thruster(a, 1)
+        
+        time.sleep(2)
+        areset(a)
         
 
     # ** Forward **

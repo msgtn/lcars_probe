@@ -73,7 +73,7 @@ class ScreenExplore(LcarsScreen):
 
         self.forward_plate = LcarsImage("assets/forward/front_section.png", (172, 150))
         self.forward_plate.visible = False
-        all_sprites.add(self.probe_forward_image, layer =71)
+        all_sprites.add(self.forward_plate, layer =71)
 
         ## Back Forward Button ##
         self.forward_button = LcarsTabBlock(colours.RED_BROWN, (372, 650), "BACK", self.forwardHandler)

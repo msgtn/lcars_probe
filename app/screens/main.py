@@ -83,8 +83,8 @@ class ScreenMain(LcarsScreen):
         self.showText(self.main_text)
             
     def logoutHandler(self, item, event, clock):
-        self.loadScreen(self, LogoutScreen)
-        self.getNextScreen()
+#         self.loadScreen(self, LogoutScreen)
+#         self.getNextScreen()
 #         self.hideAll()
         
 #         self.logout_image.visible = True
@@ -94,8 +94,8 @@ class ScreenMain(LcarsScreen):
         # PUT TURN OFF COMMAND HERE
 
     def demoHandler(self, item, event, clock):
-        #from screens.demoScreen import ScreenDemo
-        #self.loadScreen(ScreenDemo())
+        from screens.demoScreen import ScreenDemo
+        self.loadScreen(ScreenDemo())
         '''
         servo_pos_test(a, 90)
         
@@ -127,12 +127,16 @@ class ScreenMain(LcarsScreen):
         
         
     def aboutHandler(self, item, event, clock):
-        self.hideAll()
-        
-        self.purpose.visible = True
-        self.details.visible = True
-        self.personnel.visible = True
-        self.sources.visible = True
+        from screens.aboutScreen import ScreenAbout
+        self.loadScreen(ScreenAbout())
+#         self.loadScreen(AboutScreen)
+#         self.getNextScreen()
+        # self.hideAll()
+#         
+#         self.purpose.visible = True
+#         self.details.visible = True
+#         self.personnel.visible = True
+#         self.sources.visible = True
 
     #def demoHandler(self, item, event, clock):
     #    from screens.demoScreen import ScreenDemo

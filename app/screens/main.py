@@ -316,10 +316,8 @@ class ScreenMain(LcarsScreen):
         for i in range(0, 5):
             yellow_dome(a, 1)
             time.sleep(0.5)
-            yellow_dome(a, 0)
             glass(a, 1)
             time.sleep(0.5)
-            glass(a, 0)
             white_dome(a, 1)
             cont(a, (i%2)+1)
             time.sleep(1)

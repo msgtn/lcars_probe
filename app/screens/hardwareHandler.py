@@ -11,88 +11,94 @@ def connect_arduino():
     except:
         pass
 
+def asend(a, c):
+    if (a == None):
+        return
+    a.write(c)
+
 def red_thruster(a, on_off):
     if (on_off):
-        a.write('q')
+        asend(a, 'q')
     else:
-        a.write('a')
+        asend(a, 'a')
 
 def blue_thruster(a, on_off):
     if (on_off):
-        a.write('w')
+        asend(a, 'w')
     else:
-        a.write('s')
+        asend(a, 's')
 
 def yellow_dome(a, on_off):
     if (on_off):
-        a.write('e')
+        asend(a, 'e')
     else:
-        a.write('d')
+        asend(a, 'd')
 
 def white_dome(a, on_off):
     if (on_off):
-        a.write('r')
+        asend(a, 'r')
     else:
-        a.write('f')
+        asend(a, 'f')
 
 def glass(a, on_off):
     if (on_off):
-        a.write('t')
+        asend(a, 't')
     else:
-        a.write('g')
+        asend(a, 'g')
     
 def control_led(a, led_num, on_off):
     if (led_num == 1):
         if (on_off):
-            a.write('q')
+            asend(a, 'q')
         else:
-            a.write('a')
+            asend(a, 'a')
     elif (led_num == 2):
         if (on_off):
-            a.write('w')
+            asend(a, 'w')
         else:
-            a.write('s')
+            asend(a, 's')
     elif (led_num == 3):
         if (on_off):
-            a.write('e')
+            asend(a, 'e')
         else:
-            a.write('d')
+            asend(a, 'd')
     elif (led_num == 4):
         if (on_off):
-            a.write('r')
+            asend(a, 'r')
         else:
-            a.write('f')
+            asend(a, 'f')
     elif (led_num == 5):
         if (on_off):
-            a.write('t')
-        else: a.write('g')
+            asend(a, 't')
+        else:
+            asend(a, 'g')
 
 def door_fr(a, open_close):
     if (open_close):
-        a.write('i')
+        asend(a, 'i')
     else:
-        a.write('k')
+        asend(a, 'k')
     time.sleep(1)
 
 def door_fl(a, open_close):
     if (open_close):
-        a.write('o')
+        asend(a, 'o')
     else:
-        a.write('l')
+        asend(a, 'l')
     time.sleep(1)
 
 def door_br(a, open_close):
     if (open_close):
-        a.write('p')
+        asend(a, 'p')
     else:
-        a.write(';')
+        asend(a, ';')
     time.sleep(1)
 
 def door_bl(a, open_close):
     if (open_close):
-        a.write('[')
+        asend(a, '[')
     else:
-        a.write('\'')
+        asend(a, '\'')
     time.sleep(1)
 
 def servo_pos_test(a, ang):

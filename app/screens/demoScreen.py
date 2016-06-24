@@ -10,6 +10,7 @@ from ui.widgets.screen import LcarsScreen
 from ui.widgets.sprite import LcarsMoveToMouse
 
 from hardwareHandler import *
+global a
 
 class ScreenDemo(LcarsScreen):
     def setup(self, all_sprites):

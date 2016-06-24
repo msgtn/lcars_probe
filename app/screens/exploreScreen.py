@@ -324,7 +324,7 @@ class ScreenExplore(LcarsScreen):
         self.probe_forward_image.visible = False
         self.probe_aft_image.visible = False
 
-        self.showText(propulsion_text)
+        self.showText(self.propulsion_text)
         self.aft_button.visible = True
 
     # ** Forward **
@@ -334,22 +334,22 @@ class ScreenExplore(LcarsScreen):
         self.forward_button.visible = True
 
     def sensorsHandler(self, item, event, clock):
-        self.showText(sensor_text)
+        self.showText(self.sensor_text)
         self.aft_button.visible = False
         self.forward_button.visible = True
 
     def computerHandler(self, item, event, clock):
-        self.showText(computer_text)
+        self.showText(self.computer_text)
         self.aft_button.visible = False
         self.forward_button.visible = True
 
     def chipsHandler(self, item, event, clock):
-        self.showText(chip_text)
+        self.showText(self.chip_text)
         self.aft_button.visible = False
         self.forward_button.visible = True
 
     def powerHandler(self, item, event, clock):
-        self.showText(fusion_text)
+        self.showText(self.fusion_text)
         self.aft_button.visible = False
         self.forward_button.visible = True
 

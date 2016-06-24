@@ -56,11 +56,11 @@ class ScreenExplore(LcarsScreen):
         self.hideText(self.explore_screen_text)
         
         self.probe_forward_image = LcarsImage("assets/probe_front.png", (172, 500), self.forwardHandler)
-        self.probe_forward_image.visible = False
+        
         all_sprites.add(self.probe_forward_image, layer =70)
 
         self.probe_aft_image = LcarsImage("assets/probe_rear.png", (172, 150), self.aftHandler)
-        self.probe_aft_image.visible = False
+        
         all_sprites.add(self.probe_aft_image, layer=70)
 
 
